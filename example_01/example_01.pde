@@ -1,6 +1,6 @@
 import processing.serial.*;
 
-Serial myPort;
+Serial port;
 float value;
 
 void setup() {
@@ -9,7 +9,6 @@ void setup() {
 }
 
 void draw() {
-  readFromSerial();
   background(255);
   ellipse(width/2, height/2, value, value);
 }
@@ -19,12 +18,11 @@ void setSerial() {
     println("i: " + i + " - " + Serial.list()[i]);
   }
   String portName = Serial.list()[7];
-  myPort = new Serial(this, portName, 57600);
+  port = new Serial(this, portName, 57600);
 }
 
-void readFromSerial() {
-  if (myPort.available() <= 0) return;
-  String serial_value = myPort.readStringUntil('\n'); 
+void serialEvent(Serial port) {
+  String serial_value = port.readStringUntil('\n');
   if (serial_value == null) return;
-  value = float(trim(serial_value)); 
+  value = float(serial_value);
 }
