@@ -10,9 +10,11 @@ class Particle {
   float xspeed;
   float yspeed;
   
-  Particle() {
-    x = mouseX;
-    y = mouseY;
+  Particle(float posX, float posY) {
+    x = posX;
+    y = posY;
+    //x = mouseX;
+    //y = mouseY;
     xspeed = random(-1,1);
     yspeed = random(-2,0);
   }
@@ -28,7 +30,8 @@ class Particle {
   
   void display() {
     stroke(0);
-    fill(0,75);
-    ellipse(x,y,10,10);
+    //fill(0,75);
+    fill(random(255), random(255), random(255), 90);
+    ellipse(x,y,20,20);
   }
 }

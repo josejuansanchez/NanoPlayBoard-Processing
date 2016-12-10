@@ -11,10 +11,10 @@ void setup() {
   size(200, 200);
 
   // In case you want to see the list of available ports
-  // println(Serial.list());
+  println(Serial.list());
 
   // Using the first available port (might be different on your computer)
-  port = new Serial(this, Serial.list()[7], 57600);
+  port = new Serial(this, Serial.list()[5], 57600);
 }
 
 void draw() {
